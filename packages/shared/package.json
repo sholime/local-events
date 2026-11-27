@@ -1,0 +1,21 @@
+{
+  "name": "@local-events/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Common TypeScript types, validation schemas and translations used by the Local Events apps.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
