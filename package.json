@@ -10,6 +10,10 @@
   ],
   "scripts": {
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present"
+    "test": "npm run test --workspaces --if-present",
+    "db:test": "supabase db start && supabase test db"
+  },
+  "devDependencies": {
+    "supabase": "^3.4.0"
   }
 }

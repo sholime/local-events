@@ -1,0 +1,41 @@
+# Applies new database migrations to the live Supabase project after a merge into main.
+#
+# Needs one repository secret (GitHub → Settings → Secrets and variables → Actions):
+#   SUPABASE_DB_URL  the project's "Session pooler" connection string, with the database
+#                    password filled in (Supabase dashboard → Connect). The pooler address
+#                    works over IPv4, which GitHub's runners need; the direct one is IPv6 only.
+# Until it is set, the job says so and stops without failing.
+name: Deploy database
+
+on:
+  push:
+    branches: [main]
+    paths: ['supabase/migrations/**']
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+    steps:
+      - name: Check the secret is set
+        id: secret
+        run: |
+          if [ -z "$SUPABASE_DB_URL" ]; then
+            echo "::warning::SUPABASE_DB_URL is not set yet, so no migrations were applied."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.secret.outputs.ready == 'true'
+        uses: actions/checkout@v7
+      - if: steps.secret.outputs.ready == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.secret.outputs.ready == 'true'
+        run: npm ci
+      - if: steps.secret.outputs.ready == 'true'
+        run: npx supabase db push --remote="$SUPABASE_DB_URL" --yes

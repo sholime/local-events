@@ -13,7 +13,7 @@ apps/
   web/            the Next.js app (PWA): public venue pages, venue panel, app admin panel (coming next)
 packages/
   shared/         fixed lists of values, validation schemas (Zod) and sr/en labels, used by every app
-supabase/         database tables, access rules (RLS) and functions (coming next)
+supabase/         database migrations, access rules (RLS), pgTAP tests and one-time scripts
 tsconfig.base.json  TypeScript settings every package extends
 ```
 
@@ -23,7 +23,11 @@ tsconfig.base.json  TypeScript settings every package extends
 npm install
 npm run typecheck  # check types in every package
 npm test           # run the tests in every package
+npm run db:test    # start a local database in Docker and test the access rules
 ```
+
+Merging into `main` applies new migrations to the live Supabase project
+(see [.github/workflows/deploy-database.yml](.github/workflows/deploy-database.yml)).
 
 ## Conventions
 
