@@ -1,5 +1,5 @@
 # Runs on every pull request and every push to main:
-# checks that the code compiles, the tests pass, and the database migrations
+# checks that the code compiles, the tests pass, the web app builds, and the database migrations
 # apply cleanly with their access rules behaving as tested.
 name: CI
 
@@ -20,6 +20,11 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      # Builds the web app; the Supabase values are placeholders, nothing connects during the build.
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: placeholder
 
   database:
     runs-on: ubuntu-latest

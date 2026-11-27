@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "Local Events",
+    "description": "Concerts, tournaments and table reservations at your venue."
+  },
+  "home": {
+    "title": "Welcome",
+    "intro": "Events from your venue will show up here.",
+    "signedInAs": "You are signed in as {name}.",
+    "signIn": "Sign in"
+  },
+  "header": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "language": "Language"
+  },
+  "signIn": {
+    "title": "Sign in",
+    "intro": "We email you a sign-in link, no password needed.",
+    "email": "Email",
+    "sendLink": "Send link",
+    "sending": "Sending…",
+    "linkSent": "We sent a link to {email}. Open it on this device.",
+    "or": "or",
+    "google": "Continue with Google",
+    "invalidEmail": "Enter a valid email address.",
+    "failed": "Sign-in failed. Please try again.",
+    "linkExpired": "The sign-in link has expired or was already used. Ask for a new one."
+  }
+}

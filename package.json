@@ -9,6 +9,8 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "npm run dev -w @local-events/web",
+    "build": "npm run build --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "db:test": "supabase db start && supabase test db"
