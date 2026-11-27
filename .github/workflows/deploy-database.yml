@@ -4,6 +4,7 @@
 #   SUPABASE_DB_URL  the project's "Session pooler" connection string, with the database
 #                    password filled in (Supabase dashboard → Connect). The pooler address
 #                    works over IPv4, which GitHub's runners need; the direct one is IPv6 only.
+# Special characters in the password need no manual encoding; a script handles them.
 # Until it is set, the job says so and stops without failing.
 name: Deploy database
 
@@ -38,4 +39,7 @@ jobs:
       - if: steps.secret.outputs.ready == 'true'
         run: npm ci
       - if: steps.secret.outputs.ready == 'true'
-        run: npx supabase db push --remote="$SUPABASE_DB_URL" --yes
+        name: Encode the password in the connection string
+        run: node supabase/scripts/normalize-db-url.mjs
+      - if: steps.secret.outputs.ready == 'true'
+        run: npx supabase db push --remote="$SUPABASE_DB_URL_NORMALIZED" --yes
