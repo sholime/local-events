@@ -27,8 +27,6 @@ npm test           # run the tests in every package
 
 ## Conventions
 
-Same as the OdorMap projects:
-
 - Code, comments, commit messages and READMEs in English; on-screen text only in translation files (sr/en).
 - Every file starts with a sentence or two on what it does; comments explain why, with an example value.
 - Database: plural snake_case tables (`users`, `event_concerts`), snake_case columns, `id` as UUID v7,
