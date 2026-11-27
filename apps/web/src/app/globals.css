@@ -1,0 +1,62 @@
+/* Base styles: mobile-first, light and dark. Venue theming will override the accent later. */
+:root {
+  --bg: #fafaf7;
+  --fg: #1c1c1a;
+  --muted: #6b6b66;
+  --line: #e2e1db;
+  --accent: #b4442c;
+  --accent-fg: #ffffff;
+  --radius: 10px;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141413;
+    --fg: #f0efe9;
+    --muted: #a3a29c;
+    --line: #2e2d2a;
+    --accent: #e0694d;
+    --accent-fg: #141413;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+a { color: var(--accent); }
+.container { max-width: 40rem; margin: 0 auto; padding: 1rem; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; border-bottom: 1px solid var(--line); }
+.header .brand { font-weight: 700; color: var(--fg); text-decoration: none; }
+.header nav { display: flex; align-items: center; gap: 0.5rem; }
+.stack { display: grid; gap: 0.75rem; }
+.muted { color: var(--muted); }
+input, select, button { font: inherit; }
+input, select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: transparent;
+  color: inherit;
+}
+.header select { width: auto; padding: 0.3rem 0.5rem; }
+.button {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-fg);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button.secondary { background: transparent; color: var(--fg); border-color: var(--line); }
+.button:disabled { opacity: 0.6; cursor: default; }
+.notice { padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--line); }
+.notice.error { border-color: var(--accent); }
+.divider { text-align: center; color: var(--muted); }
+.stack > * { margin: 0; }

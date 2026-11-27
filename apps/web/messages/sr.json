@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "Local Events",
+    "description": "Svirke, turniri i rezervacije u tvom lokalu."
+  },
+  "home": {
+    "title": "Dobro došli",
+    "intro": "Ovde će biti događaji iz tvog lokala.",
+    "signedInAs": "Prijavljen si kao {name}.",
+    "signIn": "Prijavi se"
+  },
+  "header": {
+    "signIn": "Prijava",
+    "signOut": "Odjava",
+    "language": "Jezik"
+  },
+  "signIn": {
+    "title": "Prijava",
+    "intro": "Pošaljemo ti link za prijavu na email, bez lozinke.",
+    "email": "Email",
+    "sendLink": "Pošalji link",
+    "sending": "Šaljem…",
+    "linkSent": "Link je poslat na {email}. Otvori ga na ovom uređaju.",
+    "or": "ili",
+    "google": "Nastavi sa Google nalogom",
+    "invalidEmail": "Upiši ispravnu email adresu.",
+    "failed": "Prijava nije uspela. Pokušaj ponovo.",
+    "linkExpired": "Link za prijavu je istekao ili je već iskorišćen. Zatraži novi."
+  }
+}
